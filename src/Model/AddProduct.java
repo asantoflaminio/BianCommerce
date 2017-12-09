@@ -54,10 +54,6 @@ public class AddProduct extends JFrame {
 					JOptionPane.showMessageDialog(new JFrame(), "Precio solo admite numeros", "Error", JOptionPane.ERROR_MESSAGE);
 				}else if(!stck.matches("[0-9]+")) {
 					JOptionPane.showMessageDialog(new JFrame(), "Stock solo admite numeros", "Error", JOptionPane.ERROR_MESSAGE);
-				}else if(!name.matches("[a-zA-Z ]+")) {
-					JOptionPane.showMessageDialog(new JFrame(), "Formato de nombre erroneo", "Error", JOptionPane.ERROR_MESSAGE);
-				}else if(!descp.matches("[a-zA-Z ]+")) {
-					JOptionPane.showMessageDialog(new JFrame(), "Formato de descripcion erroneo", "Error", JOptionPane.ERROR_MESSAGE);
 				}else if(!category.equals("Celulares") && !category.equals("Televisores") && !category.equals("Auriculares") &&
 						!category.equals("Camaras") && !category.equals("Notebooks") && !category.equals("Tablets")){
 					JOptionPane.showMessageDialog(new JFrame(), "Categoria no encontrada (Recuerde primer letra en mayuscula)", "Error", JOptionPane.ERROR_MESSAGE);			

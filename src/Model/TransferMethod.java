@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 
 public class TransferMethod extends JFrame {
 
@@ -81,6 +83,7 @@ public class TransferMethod extends JFrame {
 				setVisible(false);
 				dispose();
 				shp.setVisible(true);
+				shp.setResizable(false);
 				shp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});
@@ -94,6 +97,15 @@ public class TransferMethod extends JFrame {
 				if(group.getSelection() == null) {
 					JOptionPane.showMessageDialog(new JFrame(), "Seleccione tipo de envío", "Error", JOptionPane.ERROR_MESSAGE);
 				}else {
+					try {
+						Window.writeProducts();
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedEncodingException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					dispose();
 					JOptionPane.showMessageDialog(new JFrame(), "Compra confirmada. Factura enviada a " + u.getMail() , "Gracias por su compra", JOptionPane.INFORMATION_MESSAGE);
 					System.exit(0);

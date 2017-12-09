@@ -146,6 +146,7 @@ public class ShoppingCartFrame extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				CardMethod cdm = new CardMethod(usr, shp);
 				cdm.setVisible(true);
+				cdm.setResizable(false);
 				cdm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				setVisible(false);
 				dispose();
@@ -166,6 +167,7 @@ public class ShoppingCartFrame extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				TransferMethod tm = new TransferMethod(usr, shp);
 				tm.setVisible(true);
+				tm.setResizable(false);
 				tm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				setVisible(false);
 				dispose();
@@ -186,6 +188,7 @@ public class ShoppingCartFrame extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				CashMethod cm = new CashMethod(usr, shp);
 				cm.setVisible(true);
+				cm.setResizable(false);
 				cm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				setVisible(false);
 				dispose();

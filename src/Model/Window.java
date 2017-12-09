@@ -78,6 +78,7 @@ public class Window {
 	 */
 	private void initialize() throws IOException {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBackground(UIManager.getColor("Desktop.background"));
 		frame.getContentPane().setBackground(UIManager.getColor("Desktop.background"));
 		frame.setBounds(100, 100, 800, 600);
@@ -122,6 +123,7 @@ public class Window {
 						String passText = new String(passwordField.getPassword());
 						if(u.getPassword().equals(passText)) {
 							JFrame frameUserMenu = new UserMenu(u);
+							frameUserMenu.setResizable(false);
 							frameUserMenu.setVisible(true);
 							frame.setVisible(false);
 							frameUserMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE );
@@ -186,6 +188,7 @@ public class Window {
 			public void mouseClicked(MouseEvent e) {
 				//frame.setVisible(false);
 				CreateUser cu = new CreateUser();
+				cu.setResizable(false);
 				cu.setBounds(100, 100, 800, 600);
 				cu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				cu.getContentPane().setLayout(null);
@@ -202,6 +205,7 @@ public class Window {
 			public void mouseClicked(MouseEvent e) {
 				JFrame framePass = new AdminPassword();
 				framePass.setVisible(true);
+				framePass.setResizable(false);
 				framePass.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE );
 			}
 		});
@@ -240,7 +244,7 @@ public class Window {
 			while ((strLine2 = br2.readLine()) != null) {
 				String[] str = strLine2.split("#");
 				if (str.length == 6) {
-					Product p = new Product(str[0],str[1], str[2], Integer.parseInt(str[3]),Integer.parseInt( str[4]), str[5]);
+					Product p = new Product(str[0],str[1], str[2], Double.parseDouble(str[3]) ,Integer.parseInt( str[4]), str[5]);
 					products.add(p);
 				}
 			}
@@ -316,7 +320,7 @@ public class Window {
 		
 	}
 
-	private static void writeProducts() throws FileNotFoundException, UnsupportedEncodingException {
+	public static void writeProducts() throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter writer = new PrintWriter("products.txt", "UTF-8");
 		for(Product p: products) {
 			writer.println(p.getName()+ "#" + p.getDescription() + "#" + p.getPhotoPath() + "#" + p.getPrice() + "#" + p.getStock() + "#" + p.getCategory());

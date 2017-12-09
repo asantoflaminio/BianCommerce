@@ -14,6 +14,8 @@ import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 
 public class CashMethod extends JFrame {
 
@@ -40,6 +42,15 @@ public class CashMethod extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				dispose();
+				try {
+					Window.writeProducts();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (UnsupportedEncodingException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				JOptionPane.showMessageDialog(new JFrame(), "Compra confirmada. Correo enviado a " + u.getMail(), "Gracias por su compra", JOptionPane.INFORMATION_MESSAGE);
 				System.exit(0);
 			}
@@ -56,6 +67,7 @@ public class CashMethod extends JFrame {
 				setVisible(false);
 				dispose();
 				shp.setVisible(true);
+				shp.setResizable(false);
 				shp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});

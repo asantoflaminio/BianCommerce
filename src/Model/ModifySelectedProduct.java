@@ -53,6 +53,7 @@ public class ModifySelectedProduct extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				ChangeStock cs = new ChangeStock(p);
+				cs.setResizable(false);
 				cs.setVisible(true);
 				cs.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				setVisible(false);	
@@ -69,6 +70,7 @@ public class ModifySelectedProduct extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				ChangePrice cp = new ChangePrice(p);
 				cp.setVisible(true);
+				cp.setResizable(false);
 				cp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				setVisible(false);	
 				dispose();

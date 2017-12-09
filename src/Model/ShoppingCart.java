@@ -19,7 +19,7 @@ public class ShoppingCart {
 			products.put(p, 1);
 		}
 		for(Product q: Window.products) {
-			if(q.equals(p)) {
+			if(q.getName().equals(p.getName())) {
 				q.setStock(q.getStock()-1);
 			}
 		}

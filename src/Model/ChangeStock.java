@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 
 public class ChangeStock extends JFrame {
 
@@ -50,6 +52,15 @@ public class ChangeStock extends JFrame {
 					JOptionPane.showMessageDialog(new JFrame(), "Stock solo admite numeros enteros", "Error", JOptionPane.ERROR_MESSAGE);
 				}else {
 					p.setStock(Integer.parseInt(stock));
+					try {
+						Window.writeProducts();
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedEncodingException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					JOptionPane.showMessageDialog(new JFrame(), "Stock actualizado", "Accion realizada", JOptionPane.INFORMATION_MESSAGE);
 					setVisible(false);
 					dispose();

@@ -21,6 +21,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -59,6 +61,7 @@ public class UserMenu extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				String search = textField.getText();
 				SearchTable st = new SearchTable(search, shp);
+				st.setResizable(false);
 				st.setVisible(true);
 				st.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				
@@ -125,6 +128,7 @@ public class UserMenu extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				Category c = new Category("Celulares", "Telefonos moviles", img2);
 				ProductTable pt= new ProductTable(c, shp);
+				pt.setResizable(false);
 				pt.setVisible(true);
 				pt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
@@ -142,6 +146,7 @@ public class UserMenu extends JFrame {
 				Category c = new Category("Notebooks", "Computadoras portatiles", img4);
 				ProductTable pt= new ProductTable(c, shp);
 				pt.setVisible(true);
+				pt.setResizable(false);
 				pt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});
@@ -158,6 +163,7 @@ public class UserMenu extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				Category c = new Category("Televisores", "LEDS, LCD", img6);
 				ProductTable pt= new ProductTable(c, shp);
+				pt.setResizable(false);
 				pt.setVisible(true);
 				pt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
@@ -175,6 +181,7 @@ public class UserMenu extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				Category c = new Category("Auriculares", "Audiofonos", img8);
 				ProductTable pt= new ProductTable(c, shp);
+				pt.setResizable(false);
 				pt.setVisible(true);
 				pt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
@@ -191,6 +198,7 @@ public class UserMenu extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				Category c = new Category("Tablets", "iPads y tablets android", img10);
 				ProductTable pt= new ProductTable(c, shp);
+				pt.setResizable(false);
 				pt.setVisible(true);
 				pt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
@@ -207,6 +215,7 @@ public class UserMenu extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				Category c = new Category("Camaras", "Camaras profesionales reflex y semireflex", img12);
 				ProductTable pt= new ProductTable(c, shp);
+				pt.setResizable(false);
 				pt.setVisible(true);
 				pt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
@@ -224,6 +233,7 @@ public class UserMenu extends JFrame {
 				dispose();
 				try {
 					Window w = new Window();
+					w.frame.setResizable(false);
 					w.frame.setVisible(true);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -238,10 +248,14 @@ public class UserMenu extends JFrame {
 		btnCarroDeCompras.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			//	ShoppingCart shp = new ShoppingCart();
-				ShoppingCartFrame shpcart = new ShoppingCartFrame(usr, shp);
-				shpcart.setVisible(true);
-				shpcart.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				if(shp.getProducts().keySet().size() == 0) {
+					JOptionPane.showMessageDialog(new JFrame(), "No hay elementos en su carrito" , "Carro vacio", JOptionPane.INFORMATION_MESSAGE);
+				}else {
+					ShoppingCartFrame shpcart = new ShoppingCartFrame(usr, shp);
+					shpcart.setVisible(true);
+					shpcart.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				}
+				
 			}
 		});
 		btnCarroDeCompras.setBackground(UIManager.getColor("Desktop.background"));
@@ -256,8 +270,32 @@ public class UserMenu extends JFrame {
 		JTextPane txtpnUsuario = new JTextPane();
 		txtpnUsuario.setEditable(false);
 		txtpnUsuario.setText("Usuario: "+usr.getName());
-		txtpnUsuario.setBounds(12, 49, 77, 73);
+		txtpnUsuario.setBounds(22, 45, 93, 50);
 		contentPane.add(txtpnUsuario);
+		
+		JButton btnNewButton_1 = new JButton("Editar usuario");
+		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 9));
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(shp.getProducts().keySet().size() > 0) {
+					MessageShpLost msp = new MessageShpLost(usr);
+					msp.setVisible(true);
+					msp.setResizable(false);
+					msp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				}else {
+					EditUser eu = new EditUser(usr);
+					eu.setResizable(false);
+					eu.setVisible(true);
+					eu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					setVisible(false);
+				}
+				
+				
+			}
+		});
+		btnNewButton_1.setBounds(12, 118, 103, 25);
+		contentPane.add(btnNewButton_1);
 		
 	}
 	

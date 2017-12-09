@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 
 public class ChangePrice extends JFrame {
 
@@ -56,6 +58,15 @@ public class ChangePrice extends JFrame {
 					JOptionPane.showMessageDialog(new JFrame(), "Precio solo admite numeros", "Error", JOptionPane.ERROR_MESSAGE);
 				}else {
 					p.setPrice(Double.parseDouble(pr));
+					try {
+						Window.writeProducts();
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedEncodingException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					JOptionPane.showMessageDialog(new JFrame(), "Precio actualizado", "Accion realizada", JOptionPane.INFORMATION_MESSAGE);
 					setVisible(false);
 					dispose();

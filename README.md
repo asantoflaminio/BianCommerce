@@ -1,1 +1,2 @@
-# BianCommerce
+# biancommerce
+Software Engineering I

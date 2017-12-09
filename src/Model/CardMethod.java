@@ -23,6 +23,8 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 
 public class CardMethod extends JFrame {
 
@@ -58,6 +60,7 @@ public class CardMethod extends JFrame {
 				setVisible(false);
 				dispose();
 				shp.setVisible(true);
+				shp.setResizable(false);
 				shp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});
@@ -198,7 +201,16 @@ public class CardMethod extends JFrame {
 					}else if(!personName.matches("[a-zA-Z ]+")) {
 						JOptionPane.showMessageDialog(new JFrame(), "Error en el nombre del titular", "Error", JOptionPane.ERROR_MESSAGE);
 					}else {
-
+						
+						try {
+							Window.writeProducts();
+						} catch (FileNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (UnsupportedEncodingException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						dispose();
 						JOptionPane.showMessageDialog(new JFrame(), "Abonado con " + cardType + " terminada en " + last4 + ". Comprobante de pago enviado a " + u.getMail() , "Gracias por su compra", JOptionPane.INFORMATION_MESSAGE);
 						System.exit(0);
