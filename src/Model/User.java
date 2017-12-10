@@ -1,5 +1,8 @@
 package Model;
 
+import Graphics.CreditCard;
+import Graphics.ShoppingCart;
+
 /**
  * Created by Bianca on 2/11/2017.
  */
